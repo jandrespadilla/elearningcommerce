@@ -2,13 +2,14 @@ import Nav from 'react-bootstrap/Nav';
 import './NatBar.css'
 import { Navbar } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-
+import TituloApp from '../TituloApp';
 function NadBarCategorias() {
     const funEvento = (eventKey) => alert(`Selecciono ${eventKey}`);
   
     return (
         <Navbar.Brand  href="/">
             <img src="./logo192.png" alt="MerCursos"/>
+            <TituloApp/>
             <Nav variant="pills" activeKey="1" className='fondoNav '  onSelect={funEvento}>
                 <Nav.Item>
                 <Nav.Link className='textColor' eventKey="Inicio" >
