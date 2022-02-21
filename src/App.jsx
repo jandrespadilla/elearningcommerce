@@ -5,12 +5,13 @@ import NadBarCategorias from './components/NavBar/NatBar';
 
 function App() {
   return (
-    <div className="App" style={{backgroundColor : 'red'}}>
-      <NadBarCategorias/>
+    <div className="App fondo" style={{backgroundColor : 'red'}}>
         <TituloApp/>
-      soy app
-       <input type="text" />
+      <NadBarCategorias/>
      
+     
+      
+       
     </div>
     
   );

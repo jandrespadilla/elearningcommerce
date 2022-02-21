@@ -1,34 +1,39 @@
 import Nav from 'react-bootstrap/Nav';
+import './NatBar.css'
+import { Navbar } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NadBarCategorias() {
-    const handleSelect = (eventKey) => alert(`Selecciono ${eventKey}`);
+    const funEvento = (eventKey) => alert(`Selecciono ${eventKey}`);
   
     return (
-      <Nav variant="pills" activeKey="1" style={{backgroundColor : 'red'}}  onSelect={handleSelect}>
-        <Nav.Item>
-          <Nav.Link eventKey="Inicio" >
-            Inicio
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link    eventKey="Nosotros"   title="Nosotros">
-            Nosotros
-          </Nav.Link>
-        </Nav.Item>
+        <Navbar.Brand  href="/">
+            <img src="./logo192.png" alt="MerCursos"/>
+            <Nav variant="pills" activeKey="1" className='fondoNav '  onSelect={funEvento}>
+                <Nav.Item>
+                <Nav.Link className='textColor' eventKey="Inicio" >
+                    Inicio
+                </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                <Nav.Link className='textColor'   eventKey="Nosotros"   title="Nosotros">
+                    Nosotros
+                </Nav.Link>
+                </Nav.Item>
 
-        <NavDropdown   title="Categorias" id="nav-dropdown">
-           <NavDropdown.Item eventKey="React">React</NavDropdown.Item>
-           <NavDropdown.Item eventKey="JavaScript">JavaScript</NavDropdown.Item>
-           <NavDropdown.Item eventKey="Desarrollo Web">Desarrollo Web</NavDropdown.Item>
-           <NavDropdown.Item eventKey="PHP">PHP</NavDropdown.Item>
-        </NavDropdown>
-        <Nav.Item>
-          <Nav.Link  eventKey="Contacto"   title="Contacto">
-            Contacto
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
+                <NavDropdown className='textColor'  title="Categorias" id="nav-dropdown">
+                    <NavDropdown.Item className='textColor' eventKey="React">React</NavDropdown.Item>
+                    <NavDropdown.Item className='textColor' eventKey="JavaScript">JavaScript</NavDropdown.Item>
+                    <NavDropdown.Item className='textColor' eventKey="Desarrollo Web">Desarrollo Web</NavDropdown.Item>
+                    <NavDropdown.Item className='textColor' eventKey="PHP">PHP</NavDropdown.Item>
+                </NavDropdown>
+                <Nav.Item>
+                <Nav.Link className='textColor' eventKey="Contacto"   title="Contacto">
+                    Contacto
+                </Nav.Link>
+                </Nav.Item>
+            </Nav>
+      </Navbar.Brand>
     );
   }
   
