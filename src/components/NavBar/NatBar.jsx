@@ -2,7 +2,7 @@ import Nav from 'react-bootstrap/Nav';
 import './NatBar.css'
 import { Navbar } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import TituloApp from '../TituloApp';
+import TituloApp from '../TituloApp/TituloApp';
 function NadBarCategorias() {
     const funEvento = (eventKey) => alert(`Selecciono ${eventKey}`);
   
