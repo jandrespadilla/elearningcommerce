@@ -7,10 +7,12 @@ function NadBarCategorias() {
     const funEvento = (eventKey) => alert(`Selecciono ${eventKey}`);
   
     return (
-        <Navbar.Brand  href="/">
+        <Navbar.Brand >
             <img src="./logo192.png" alt="MerCursos"/>
             <TituloApp/>
             <Nav variant="pills" activeKey="1" className='fondoNav '  onSelect={funEvento}>
+            <img className='logoBrand'  src="./log.png"  alt="logo" />
+  
                 <Nav.Item>
                 <Nav.Link className='textColor' eventKey="Inicio" >
                     Inicio
