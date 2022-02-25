@@ -3,25 +3,29 @@ import './NatBar.css'
 import { Navbar } from 'react-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import TituloApp from '../TituloApp/TituloApp';
+import CartWidget from '../CartWidget/CartWidget';
+import LogoWidget from '../LogoWidget/LogoWidget';
+
+
 function NadBarCategorias() {
     const funEvento = (eventKey) => alert(`Selecciono ${eventKey}`);
-  
+    const titulo = 'Mercurso'
     return (
         <Navbar.Brand >
-            <img src="./logo192.png" alt="MerCursos"/>
+            <img src="./logo192.png" alt={titulo}/>
             <TituloApp/>
             <Nav variant="pills" activeKey="1" className='fondoNav '  onSelect={funEvento}>
-            <img className='logoBrand'  src="./log.png"  alt="logo" />
+            <LogoWidget titulo={titulo}/>
   
                 <Nav.Item>
-                <Nav.Link className='textColor' eventKey="Inicio" >
-                    Inicio
-                </Nav.Link>
+                    <Nav.Link className='textColor' eventKey="Inicio" >
+                        Inicio
+                    </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                <Nav.Link className='textColor'   eventKey="Nosotros"   title="Nosotros">
-                    Nosotros
-                </Nav.Link>
+                    <Nav.Link className='textColor'   eventKey="Nosotros"   title="Nosotros">
+                        Nosotros
+                    </Nav.Link>
                 </Nav.Item>
 
                 <NavDropdown className='textColor'  title="Categorias" id="nav-dropdown">
@@ -31,10 +35,15 @@ function NadBarCategorias() {
                     <NavDropdown.Item className='textColor' eventKey="PHP">PHP</NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Item>
-                <Nav.Link className='textColor' eventKey="Contacto"   title="Contacto">
-                    Contacto
-                </Nav.Link>
+                    <Nav.Link className='textColor' eventKey="Contacto"   title="Contacto">
+                        Contacto
+                    </Nav.Link>
                 </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link className='textColor' eventKey="Inicio" >
+                            <CartWidget />   
+                    </Nav.Link>
+                </Nav.Item>                
             </Nav>
       </Navbar.Brand>
     );
