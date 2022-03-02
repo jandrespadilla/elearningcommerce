@@ -1,7 +1,7 @@
 import { useEffect , useState } from 'react'
 import { getFech } from '../../helpers/getFech'
 import './ItemsListConteiner.css'
-
+import ItemCount from '../ItemCount/ItemCount'
 
 
 
@@ -16,7 +16,7 @@ function ItemsListConteiner({greeting}) {
             setCursos(data)
        }  
     ).catch(
-     //   (error)=>  console.log(error)
+  
     ).finally(() => {
         setLoading(false)
         }
@@ -24,7 +24,7 @@ function ItemsListConteiner({greeting}) {
 
    }, [])
    
-  console.log(cursos)
+ // console.log(cursos)
 
     return ( 
 
@@ -32,7 +32,7 @@ function ItemsListConteiner({greeting}) {
             { 
             loading ? <h2>{greeting}</h2>
                 :
-            cursos.map((curso) => <li key={curso.id}>{curso.name}</li>)
+            cursos.map((curso) => <li key={curso.id}>{curso.name}   <ItemCount stock={curso.stock} /></li>)
         
         }
         </>
