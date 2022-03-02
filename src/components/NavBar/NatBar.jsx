@@ -1,13 +1,30 @@
 import Nav from 'react-bootstrap/Nav';
 import './NatBar.css'
 import { Navbar } from 'react-bootstrap';
+import { getFech } from '../../helpers/getFech'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import TituloApp from '../TituloApp/TituloApp';
 import CartWidget from '../CartWidget/CartWidget';
 import LogoWidget from '../LogoWidget/LogoWidget';
+import { useEffect , useState } from 'react'
 
 
 function NadBarCategorias() {
+    const [cursos, setCursos] = useState([])
+    
+
+   useEffect(() => {
+    getFech.then(
+        (data) => {
+             
+            setCursos(data)
+       }  
+    ).catch(
+  
+    )
+
+   }, [])
+
     const funEvento = (eventKey) => alert(`Selecciono ${eventKey}`);
     const titulo = 'Mercurso'
     return (
@@ -29,10 +46,18 @@ function NadBarCategorias() {
                 </Nav.Item>
 
                 <NavDropdown className='textColor'  title="Categorias" id="nav-dropdown">
-                    <NavDropdown.Item className='textColor' eventKey="React">React</NavDropdown.Item>
-                    <NavDropdown.Item className='textColor' eventKey="JavaScript">JavaScript</NavDropdown.Item>
-                    <NavDropdown.Item className='textColor' eventKey="Desarrollo Web">Desarrollo Web</NavDropdown.Item>
-                    <NavDropdown.Item className='textColor' eventKey="PHP">PHP</NavDropdown.Item>
+                        { cursos.map((curso) =>
+                                
+                                <NavDropdown.Item className='textColor' eventKey={curso.name}>{curso.name}</NavDropdown.Item>
+                                        
+                                
+                            
+                    
+                    
+                        )}
+                    
+         
+
                 </NavDropdown>
                 <Nav.Item>
                     <Nav.Link className='textColor' eventKey="Contacto"   title="Contacto">
