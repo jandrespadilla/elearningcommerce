@@ -37,7 +37,7 @@ function ItemsList({greeting}) {
               
               
                     
-                          <ItemCount curso={curso} />
+                          <ItemCount curso={curso} key={curso.id}/>
                      
                
                

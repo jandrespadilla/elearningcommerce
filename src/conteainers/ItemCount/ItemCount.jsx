@@ -12,9 +12,12 @@ import { useState, useEffect } from 'react';
     setVacantes(curso.stock - contador)
   
   },[curso.stock, contador]);
+
   const sumarHandler = () => {
     setContador(contador + 1)
   };
+
+
   const restarHandler = () => {
     if(contador === 0){
       return;  
@@ -31,7 +34,7 @@ import { useState, useEffect } from 'react';
 
   return (
     <Col>
-    <Card style={{ width: '14rem' }}>
+    <Card   style={{ width: '14rem' }}>
       <Card.Img variant="top" src={curso.img}/>
       <Card.Body>
         <Card.Title>{curso.name}</Card.Title>
@@ -41,21 +44,14 @@ import { useState, useEffect } from 'react';
           <Card.Text>
           Puestos disponibles  {vacantes}
         </Card.Text>
-        <Button variant="primary"  onClick={() => sumarHandler()}>+</Button> &nbsp;{contador}&nbsp;  <Button variant="primary" onClick={() => restarHandler()}>-</Button> <br/><br/>
+        <Button variant="primary"    onClick={() => sumarHandler()}>+</Button> &nbsp;{contador}&nbsp;  <Button variant="primary"   onClick={() => restarHandler()}>-</Button> <br/><br/>
 
-        <Button variant="primary" onClick={() => onAdd() }>Agrear al carrito</Button>
+        <Button variant="primary"   onClick={() => onAdd() }>Agrear al carrito</Button>
         
       </Card.Body>
     </Card>
     </Col>
-   /* <div>
-        
-      <p>
-           Vacantes {vacantes} <button onClick={() => sumarHandler()}>+</button> {contador}  <button onClick={() => restarHandler()}>-</button> <button onClick={() => onAdd() }>Agrear al carrito</button>
-           
-      </p>
-     
-    </div>*/
+  
   );
 }
 export default ItemCount

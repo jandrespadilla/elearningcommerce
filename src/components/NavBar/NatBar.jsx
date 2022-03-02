@@ -48,7 +48,7 @@ function NadBarCategorias() {
                 <NavDropdown className='textColor'  title="Categorias" id="nav-dropdown">
                         { cursos.map((curso) =>
                                 
-                                <NavDropdown.Item className='textColor' eventKey={curso.name}>{curso.name}</NavDropdown.Item>
+                                <NavDropdown.Item className='textColor' key={curso.id} eventKey={curso.name}>{curso.name}</NavDropdown.Item>
                                         
                                 
                             
