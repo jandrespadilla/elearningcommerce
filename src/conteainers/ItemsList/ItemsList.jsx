@@ -1,11 +1,11 @@
 import { useEffect , useState } from 'react'
 import { getFech } from '../../helpers/getFech'
-import './ItemsListConteiner.css'
+import './ItemsList.css'
 import ItemCount from '../ItemCount/ItemCount'
+import {Row } from 'react-bootstrap';
 
 
-
-function ItemsListConteiner({greeting}) {
+function ItemsList({greeting}) {
     const [cursos, setCursos] = useState([])
     const [loading, setLoading] = useState(true)
 
@@ -32,12 +32,21 @@ function ItemsListConteiner({greeting}) {
             { 
             loading ? <h2>{greeting}</h2>
                 :
-            cursos.map((curso) => <li key={curso.id}>{curso.name}   <ItemCount stock={curso.stock} /></li>)
-        
+                <Row xs={1} md={4} className="g-4">
+                { cursos.map((curso) =>
+              
+              
+                    
+                          <ItemCount curso={curso} />
+                     
+               
+               
+                )}
+                </Row>               
         }
         </>
     
     )  
 }
 
-export default ItemsListConteiner
+export default ItemsList
