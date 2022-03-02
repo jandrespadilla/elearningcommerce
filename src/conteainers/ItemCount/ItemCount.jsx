@@ -14,6 +14,10 @@ import { useState, useEffect } from 'react';
   },[curso.stock, contador]);
 
   const sumarHandler = () => {
+    if(vacantes === 0){
+      console.log('No hay mas vacantes')
+      return;  
+    }      
     setContador(contador + 1)
   };
 
@@ -22,6 +26,7 @@ import { useState, useEffect } from 'react';
     if(contador === 0){
       return;  
     }
+  
     setContador(contador - 1)
   };
  
