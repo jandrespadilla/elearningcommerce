@@ -10,7 +10,7 @@ function ItemsList({data}) {
     
     useEffect(() => {
         setCursos(data)
-    }, [])
+    }, [data])
 
 
     return ( 

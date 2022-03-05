@@ -5,13 +5,13 @@ import { useState, useEffect } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 
  function Item({curso}) {
-  const [contador, setContador] = useState(0);
+ 
   const [vacantes, setVacantes] = useState(0);
   useEffect(() => {
     
-    setVacantes(curso.stock - contador)
+    setVacantes(curso.stock)
   
-  },[curso.stock, contador]);
+  },[curso.stock]);
 
   return (
     <Col>
