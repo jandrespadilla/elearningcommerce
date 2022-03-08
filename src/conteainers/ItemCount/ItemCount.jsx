@@ -35,7 +35,7 @@ import { useState } from 'react';
 
   return (
       <>
-        <Button variant="primary"    onClick={() => sumarHandler()}>+</Button> &nbsp;{contador}&nbsp;  <Button variant="primary"   onClick={() => restarHandler()}>-</Button> <br/><br/>
+        <Button variant="primary"    onClick={() => sumarHandler()}>+</Button> <span className='textNumero'>&nbsp;{contador}&nbsp;</span>  <Button variant="primary"   onClick={() => restarHandler()}>-</Button> <br/><br/>
 
         <Button variant="primary"   onClick={() => onAdd() }>Agrear al carrito</Button>
         

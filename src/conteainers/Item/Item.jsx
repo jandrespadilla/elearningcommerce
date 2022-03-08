@@ -18,11 +18,11 @@ import ItemCount from '../ItemCount/ItemCount';
     <Card   style={{ width: '14rem' }}>
       <Card.Img variant="top" src={curso.img}/>
       <Card.Body>
-        <Card.Title>{curso.name}</Card.Title>
-        <Card.Text>
+        <Card.Title className='textNombre'>{curso.name}</Card.Title>
+        <Card.Text className='textNombre'>
           {curso.description}
           </Card.Text>
-          <Card.Text>
+          <Card.Text className='textNombre'>
           Puestos disponibles  {vacantes}
         </Card.Text>
         <ItemCount curso={curso} />

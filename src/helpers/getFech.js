@@ -40,7 +40,36 @@ export let listaCursos = [
     description: 'Curso de PHP avanzado', 
     img: './cursos/php.png', 
     stock: 10 
-    }                        
+    },
+    {  
+     id: '7', 
+    name: 'Python 101', 
+    description: 'Curso de Python basico', 
+    img: './cursos/python.png', 
+    stock: 10 
+    },
+    {  
+     id: '8', 
+    name: 'Python Avanzado', 
+    description: 'Curso de Python avanzado', 
+    img: './cursos/python.png', 
+    stock: 10 
+    },
+    {  
+     id: '9', 
+    name: 'Node 101', 
+    description: 'Curso de Node basico', 
+    img: './cursos/node.png', 
+    stock: 10 
+    },
+    {  
+     id: '10', 
+    name: 'Node Avanzado', 
+    description: 'Curso de Node avanzado', 
+    img: './cursos/node.png', 
+    stock: 10 
+    }   
+
 ]
 
 
@@ -57,3 +86,17 @@ export const getFech = new Promise((resolve,reject)=>{
  
 })
 
+/**
+ * 
+ useEffect(() => {
+    let url =
+      'https://jorgeandrespadilla.com.ar/mod/webservice/rest/server.php?wstoken=83453b9a2f882545cef25f1b361d2103&wsfunction=core_course_get_courses_by_field&field=category&value=3&moodlewsrestformat=json';
+    fetch(url) // llamada a la api
+      .then((respuesta) => respuesta.json())
+      .then((respuesta) => console.log(respuesta));
+  }, []); 
+}
+
+
+ * 
+ */
