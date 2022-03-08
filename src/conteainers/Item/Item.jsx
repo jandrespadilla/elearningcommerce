@@ -7,18 +7,24 @@ import ItemCount from '../ItemCount/ItemCount';
  function Item({curso}) {
  
   const [vacantes, setVacantes] = useState(0);
+  const [urlImg, setUrlImg] = useState(0);
   useEffect(() => {
-    
-    setVacantes(curso.stock)
+    if (curso.overviewfiles.length>0) {
+      let fileUrl = curso.overviewfiles[0].filename
+      ;
+      setUrlImg(fileUrl)     
+    }
+
+    setVacantes(10)
   
-  },[curso.stock]);
+  },[curso]);
 
   return (
     <Col>
     <Card   style={{ width: '14rem' }}>
-      <Card.Img variant="top" src={curso.img}/>
+      <Card.Img variant="top" src={'./cursos/'+urlImg}/>
       <Card.Body>
-        <Card.Title className='textNombre'>{curso.name}</Card.Title>
+        <Card.Title className='textNombre'>{curso.fullname}</Card.Title>
         <Card.Text className='textNombre'>
           {curso.description}
           </Card.Text>

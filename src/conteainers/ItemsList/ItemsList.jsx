@@ -9,6 +9,7 @@ function ItemsList({data}) {
     const [cursos, setCursos] = useState([])
     
     useEffect(() => {
+       
         setCursos(data)
     }, [data])
 

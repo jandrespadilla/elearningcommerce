@@ -2,14 +2,14 @@
 import './ItemsListConteiner.css'
 import { useEffect , useState } from 'react'
 import ItemsList from '../ItemsList/ItemsList'
-import { getFech } from '../../helpers/getFech'
+import {  getCursos} from '../../helpers/getFech'
 
 
 
 function ItemsListConteiner({greeting}) {
     const [cursos, setCursos] = useState([])
     const [loading, setLoading] = useState(true)
-    useEffect(() => {
+   /* useEffect(() => {
         getFech.then(
             (data) => {
                  
@@ -22,8 +22,22 @@ function ItemsListConteiner({greeting}) {
             }
         )
     
-       }, [])
-       
+       }, [])*/
+       useEffect(() => {
+        getCursos.then(
+            (data) => {
+                 
+                setCursos(data.courses)
+           }  
+        ).catch(
+      
+        ).finally(() => {
+            setLoading(false)
+            }
+        )
+    
+       }, []) 
+         
     return ( 
 
         <>
