@@ -2,27 +2,13 @@
 import './ItemsListConteiner.css'
 import { useEffect , useState } from 'react'
 import ItemsList from '../ItemsList/ItemsList'
-import {  getCursos} from '../../helpers/getFech'
+import {  getCursos} from '../../helpers/getCursos'
 
 
 
 function ItemsListConteiner({greeting}) {
     const [cursos, setCursos] = useState([])
     const [loading, setLoading] = useState(true)
-   /* useEffect(() => {
-        getFech.then(
-            (data) => {
-                 
-                setCursos(data)
-           }  
-        ).catch(
-      
-        ).finally(() => {
-            setLoading(false)
-            }
-        )
-    
-       }, [])*/
        useEffect(() => {
         getCursos.then(
             (data) => {
