@@ -10,8 +10,9 @@ function App() {
         <div className="App fondo" style={{backgroundColor : 'red'}}>
         <NadBarCategorias/>
         <Routes>
-            <Route path='/' element={<ItemsListConteiner greeting='Cargando'/>}></Route>
-            <Route path='/tienda' element={<ItemsListConteiner greeting='Cargando'/>}></Route>
+            <Route path='/' element={<ItemsListConteiner categoriaHome='6' greeting='Cargando..'/>}></Route>
+            <Route path='/tienda/:categoriaId' element={<ItemsListConteiner greeting='Cargando..'/>}></Route>
+            <Route path='/carrito' element={<ItemsListConteiner greeting='Cargando'/>}></Route>
             <Route path='/*' element={ <Navigate to='/'></Navigate>}></Route>
           </Routes>
         </div>

@@ -9,9 +9,9 @@ import ItemCount from '../ItemCount/ItemCount';
   const [vacantes, setVacantes] = useState(0);
   const [urlImg, setUrlImg] = useState(0);
   useEffect(() => {
+  
     if (curso.overviewfiles.length>0) {
-      let fileUrl = curso.overviewfiles[0].filename
-      ;
+      let fileUrl = curso.overviewfiles[0].filename ;
       setUrlImg(fileUrl)     
     }
 
