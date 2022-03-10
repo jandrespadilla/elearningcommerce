@@ -22,7 +22,7 @@ import ItemCount from '../ItemCount/ItemCount';
   return (
     <Col>
     <Card   style={{ width: '14rem' }}>
-      <Card.Img variant="top" src={'./cursos/'+urlImg}/>
+      <Card.Img variant="top" src={'/cursos/'+urlImg}/>
       <Card.Body>
         <Card.Title className='textNombre'>{curso.fullname}</Card.Title>
         <Card.Text className='textNombre'>

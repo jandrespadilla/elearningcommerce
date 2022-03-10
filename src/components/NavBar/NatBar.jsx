@@ -9,36 +9,34 @@ import CartWidget from '../CartWidget/CartWidget';
 //import LogoWidget from '../LogoWidget/LogoWidget';
 import { NavLink } from 'react-router-dom';
 import { useEffect , useState } from 'react'
-
+import logo from '../../img/logo192.png'
 
 function NadBarCategorias() {
     const [cursos, setCursos] = useState([])
     
 
    useEffect(() => {
-    getCategorias.then(
-        (data) => {
-             
-            setCursos(data)
-       }  
-    ).catch(
-  
-    )
-
+            getCategorias.then(
+                (data) => {
+                    setCursos(data)
+                }  
+            ).catch(
+            )
    }, [])
 
     const funEvento = (eventKey) => alert(`Selecciono ${eventKey}`);
     const titulo = 'Mercurso'
     return (
         <Navbar.Brand  >
-            <img src="./logo192.png" alt={titulo}/>
+            <img src={logo} alt={titulo}/>
             <TituloApp/>
             <Nav variant="pills" activeKey="1" className='fondoNav justify-content-end' style={{ width: "100%" }} onSelect={funEvento}>
               
                 <Nav.Item>
-                    <Nav.Link className='textColor' eventKey="Inicio" >
+                   
+                    <NavLink className='textColor ' to='/'>
                         Inicio
-                    </Nav.Link>
+                        </NavLink> 
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link className='textColor'   eventKey="Nosotros"   title="Nosotros">

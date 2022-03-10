@@ -1,8 +1,9 @@
 import './CartWidget.css'
+import logo from '../../img/carro.png'
 
 function CartWidget() {
     return (
-        <img src="carro.png" alt="Carrito" className="cartWidget"  /> 
+        <img src={logo} alt="Carrito" className="cartWidget"  /> 
     
     )  
 }
