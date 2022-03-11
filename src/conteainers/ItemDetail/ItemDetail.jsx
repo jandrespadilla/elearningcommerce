@@ -1,30 +1,39 @@
 import { useEffect , useState } from 'react'
 
 import './ItemDetail.css'
- 
-import {Row } from 'react-bootstrap';
+
+import {Col,Card} from 'react-bootstrap';
 
 
-function ItemDetail({data}) {
-    const [cursos, setCursos] = useState([])
-    
+function ItemDetail({secciones,cursos}) {
+    const [seccionesH, setSeccionesH] = useState([])
+    const [urlImg, setUrlImg] = useState(0);
     useEffect(() => {
-        
-        setCursos(data)
-        
-    }, [data])
+        if (cursos.overviewfiles.length>0) {
+            let fileUrl = cursos.overviewfiles[0].filename ;
+            setUrlImg(fileUrl)     
+          }      
+        setSeccionesH(secciones)
+       
+    }, [secciones,cursos])
 
 
     return ( 
 
         <>
          
-                <Row xs={1} md={4} className="g-4">
-                { cursos.map((curso) =>
-                    <p key={curso.id}>{curso.name}</p>
+         <Col>
+            <Card style={{ width: '50%' }} >
+            <Card.Img variant="top" style={{ width: '14rem' }} src={'/cursos/'+urlImg}/>
+               
+                <h1 className='textNombre' key={cursos.id}>{cursos.fullname}</h1>
+                <h2 className='textNombre'>Temas</h2>
+                { seccionesH.map((seccion) =>
+                    <p className='textNombre' key={seccion.id}>{seccion.name}</p>
                        
                 )}
-                </Row>               
+         </Card>
+        </Col>            
         
         </>
     

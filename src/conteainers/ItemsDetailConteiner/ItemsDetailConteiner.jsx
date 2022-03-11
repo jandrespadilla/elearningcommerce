@@ -2,12 +2,13 @@ import './ItemsDetailConteiner.css'
 import { useEffect , useState } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom'
-
+import {  getCursos} from '../../helpers/getCursos'
 
 function ItemDetailConteiner({greeting}) {
     
     const [loading, setLoading] = useState(true)
-    const [curso, setCurso] = useState([])
+    const [secciones, setSecciones] = useState([])
+    const [cursos, setCursos] = useState([])
     const {cursoId,cantidad} = useParams()
     const getSecciones2 = new Promise((resolve,reject)=>{
         let url = 'https://jorgeandrespadilla.com.ar/mod/webservice/rest/server.php?wstoken=83453b9a2f882545cef25f1b361d2103&wsfunction=core_course_get_contents&courseid='+cursoId+'&moodlewsrestformat=json';
@@ -22,13 +23,25 @@ function ItemDetailConteiner({greeting}) {
         getSecciones2.then(
             (data) => {
               
-                setCurso(data)
+                setSecciones(data)
+
             }  
         ).catch(
         ).finally(() => {
             setLoading(false)
             }
         )
+        getCursos.then(
+            (data) => {
+                
+                setCursos(data.courses.find(course => course.id === parseInt(cursoId) ))
+           }  
+        ).catch(
+        ).finally(() => {
+            setLoading(false)
+            }
+        )
+
 }, [cursoId,cantidad]) 
 
  
@@ -37,7 +50,7 @@ function ItemDetailConteiner({greeting}) {
             { 
             loading ? <h2>{greeting}</h2>
                 :
-                <ItemDetail data={curso} />    
+                <ItemDetail secciones={secciones} cursos={cursos}  />    
             
                 
                     
