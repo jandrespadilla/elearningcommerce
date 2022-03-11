@@ -9,9 +9,10 @@ function ItemDetail({data}) {
     const [cursos, setCursos] = useState([])
     
     useEffect(() => {
-       
+        
         setCursos(data)
-    }, [])
+        
+    }, [data])
 
 
     return ( 
@@ -19,9 +20,10 @@ function ItemDetail({data}) {
         <>
          
                 <Row xs={1} md={4} className="g-4">
-                {   
-                console.log(cursos)
-               }
+                { cursos.map((curso) =>
+                    <p key={curso.id}>{curso.name}</p>
+                       
+                )}
                 </Row>               
         
         </>
