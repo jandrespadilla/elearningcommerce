@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 import { useEffect , useState } from 'react'
 import logo from '../../img/logo192.png'
 
-function NadBarCategorias() {
+function NadBarCategorias(titulo) {
     const [cursos, setCursos] = useState([])
     
 
@@ -25,7 +25,7 @@ function NadBarCategorias() {
    }, [])
 
     const funEvento = (eventKey) => alert(`Selecciono ${eventKey}`);
-    const titulo = 'Mercurso'
+  
     return (
         <Navbar.Brand  >
             <img src={logo} alt={titulo}/>

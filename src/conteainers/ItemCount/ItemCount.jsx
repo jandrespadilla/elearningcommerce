@@ -2,27 +2,21 @@ import React from 'react';
 import './ItemCount.css';
 import {  Button } from 'react-bootstrap';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-
- function ItemCount({curso}) {
+ function ItemCount({curso,vacantes}) {
   const [contador, setContador] = useState(0);
-   
- 
-
   const sumarHandler = () => {
-    if((curso.stock - contador) === 0){
+    if((parseInt(vacantes) - contador) === 0){
       console.log('No hay mas vacantes')
       return;  
-    }      
+    }   
     setContador(contador + 1)
   };
-
-
   const restarHandler = () => {
     if(contador === 0){
       return;  
     }
-  
     setContador(contador - 1)
   };
  
@@ -37,8 +31,12 @@ import { useState } from 'react';
       <>
         <Button variant="primary"    onClick={() => sumarHandler()}>+</Button> <span className='textNumero'>&nbsp;{contador}&nbsp;</span>  <Button variant="primary"   onClick={() => restarHandler()}>-</Button> <br/><br/>
 
-        <Button variant="primary"   onClick={() => onAdd() }>Agrear al carrito</Button>
-        
+        <Button variant="primary"   onClick={() => onAdd() }>Agrear al carrito</Button><br/><br/>
+        <Link to={{
+                                            pathname:'/detalle/'+curso.id+'/'+contador                                             
+                                            }} >
+                                   Ver Detalle
+                                    </Link> 
       </>
   
   );

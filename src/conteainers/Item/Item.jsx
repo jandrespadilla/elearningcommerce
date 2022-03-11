@@ -31,8 +31,10 @@ import ItemCount from '../ItemCount/ItemCount';
           <Card.Text className='textNombre'>
           Puestos disponibles  {vacantes}
         </Card.Text>
-        <ItemCount curso={curso} />
-
+        <ItemCount curso={curso} vacantes={vacantes} />
+        
+                                           
+       
         
       </Card.Body>
     </Card>

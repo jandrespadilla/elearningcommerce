@@ -1,43 +1,42 @@
-
 import './ItemsDetailConteiner.css'
 import { useEffect , useState } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
-import {  getCursos} from '../../helpers/getCursos'
-
+import {  getSecciones} from '../../helpers/getSecciones'
+import { useParams } from 'react-router-dom'
 
 
 function ItemDetailConteiner({greeting}) {
-    const [cursos, setCursos] = useState([])
+    
     const [loading, setLoading] = useState(true)
-       useEffect(() => {
-        getCursos.then(
+    const [curso, setCurso] = useState()
+    const {cursoId,cantidad} = useParams()
+
+   
+    useEffect(() => {
+        getSecciones.then(
             (data) => {
-                 
-                setCursos(data.courses)
-           }  
+                setCurso(data)
+            }  
         ).catch(
-      
         ).finally(() => {
             setLoading(false)
             }
         )
-    
-       }, []) 
-         
-    return ( 
+}, [cursoId,cantidad]) 
 
+ 
+    return ( 
         <>
             { 
             loading ? <h2>{greeting}</h2>
                 :
-            <ItemDetail data={cursos} />
+                <ItemDetail data={curso} />    
             
-           
-          
-
+                
+                    
+            
         }
         </>
-    
     )  
 }
 export default ItemDetailConteiner
