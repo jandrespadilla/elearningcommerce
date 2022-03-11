@@ -3,9 +3,9 @@ import { useEffect , useState } from 'react'
 import './ItemDetail.css'
 
 import {Col,Card} from 'react-bootstrap';
-
-
-function ItemDetail({secciones,cursos}) {
+import ItemCount from '../ItemCount/ItemCount';
+import  LinkDetalle  from '../../components/LinkDetalle/LinkDetalle'
+function ItemDetail({secciones,cursos,vacantes}) {
     const [seccionesH, setSeccionesH] = useState([])
     const [urlImg, setUrlImg] = useState(0);
     useEffect(() => {
@@ -32,7 +32,9 @@ function ItemDetail({secciones,cursos}) {
                     <p className='textNombre' key={seccion.id}>{seccion.name}</p>
                        
                 )}
-         </Card>
+                  <ItemCount curso={cursos} vacantes={vacantes} />
+                  <LinkDetalle curso={cursos} vacantes={vacantes} />
+             </Card>
         </Col>            
         
         </>
