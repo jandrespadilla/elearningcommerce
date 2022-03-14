@@ -3,7 +3,7 @@ import './Item.css';
 import { Card ,  Col} from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
-
+import  LinkDetalle  from '../../components/LinkDetalle/LinkDetalle'
  function Item({curso}) {
  
   const [vacantes, setVacantes] = useState(0);
@@ -32,7 +32,7 @@ import ItemCount from '../ItemCount/ItemCount';
           Puestos disponibles  {vacantes}
         </Card.Text>
         <ItemCount curso={curso} vacantes={vacantes} />
-        
+        <LinkDetalle curso={curso} vacantes={vacantes} />
                                            
        
         
