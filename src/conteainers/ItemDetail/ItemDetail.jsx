@@ -33,7 +33,7 @@ function ItemDetail({secciones,cursos,vacantes}) {
                        
                 )}
                   <ItemCount curso={cursos} vacantes={vacantes} />
-                  <LinkDetalle curso={cursos} vacantes={vacantes} />
+                  
              </Card>
         </Col>            
         
