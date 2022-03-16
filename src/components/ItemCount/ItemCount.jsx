@@ -3,14 +3,12 @@ import './ItemCount.css';
 import {  Button } from 'react-bootstrap';
 import { useState , useEffect } from 'react';
  
-
-
  function ItemCount({curso,vacantes}) {
   const [contador, setContador] = useState(0);
   
   useEffect(() => {
   
-    setContador(vacantes)
+   // setContador(0)
   
   },[vacantes]);  
   const sumarHandler = () => {
@@ -20,13 +18,12 @@ import { useState , useEffect } from 'react';
     }   
     setContador(contador + 1)
   };
-  const restarHandler = () => {
+  const restarHandler  = () => {
     if(contador === 0){
       return;  
     }
     setContador(contador - 1)
   };
- 
   const onAdd = () => {
     if(contador === 0){
         return;  
@@ -37,12 +34,8 @@ import { useState , useEffect } from 'react';
   return (
       <>
         <Button variant="primary"    onClick={() => sumarHandler()}>+</Button> <span className='textNumero'>&nbsp;{contador}&nbsp;</span>  <Button variant="primary"   onClick={() => restarHandler()}>-</Button> <br/><br/>
-
         <Button variant="primary"   onClick={() => onAdd() }>Agrear al carrito</Button><br/><br/>
-        
-  
       </>
-  
   );
 }
 export default ItemCount

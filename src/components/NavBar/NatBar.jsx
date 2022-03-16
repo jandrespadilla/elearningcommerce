@@ -30,7 +30,7 @@ function NadBarCategorias(titulo) {
         <Navbar.Brand  >
             <img src={logo} alt={titulo}/>
             <TituloApp/>
-            <Nav variant="pills" activeKey="1" className='fondoNav justify-content-end' style={{ width: "100%" }} onSelect={funEvento}>
+            <Nav variant="pills" activeKey="1" className='fondoNav' style={{ width: "100%" }} onSelect={funEvento}>
               
                 <Nav.Item>
                    
@@ -48,7 +48,7 @@ function NadBarCategorias(titulo) {
                         { cursos.map((categorias) => 
                                 <NavDropdown.Item className='textColor' key={categorias.id} >
                                     <NavLink to={{
-                                            pathname:'/tienda/'+categorias.id                                             
+                                            pathname:'/tienda/'+categorias+'/'+categorias.name.toLowerCase()                                             
                                             }} >
                                     {categorias.name}
                                     </NavLink>
@@ -62,7 +62,7 @@ function NadBarCategorias(titulo) {
                 </Nav.Item>
                 <Nav.Item >
                    
-                        <NavLink className='textColor ' to='/carrito'>
+                        <NavLink className='textColor ' to='/cart'>
                             <CartWidget />  
                         </NavLink> 
                      
