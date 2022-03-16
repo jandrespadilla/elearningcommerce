@@ -3,9 +3,9 @@ import './Item.css';
 import { Card ,  Col} from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
-import  LinkDetalle  from '../../components/LinkDetalle/LinkDetalle'
- function Item({curso}) {
- 
+import  LinkDetalle  from '../LinkDetalle/LinkDetalle'
+
+function Item({curso}) {
   const [vacantes, setVacantes] = useState(0);
   const [urlImg, setUrlImg] = useState(0);
   useEffect(() => {
