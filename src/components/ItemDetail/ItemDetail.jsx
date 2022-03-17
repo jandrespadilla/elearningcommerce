@@ -28,7 +28,7 @@ function ItemDetail({secciones,cursos,vacantes}) {
                     <p className='textNombre' key={seccion.id}>{seccion.name}</p>
                 )}
                   <ItemCount curso={cursos} vacantes={vacantes} />
-                  <LinkDetalle curso={cursos} vacantes={vacantes} />
+                  
              </Card>
         </Col>            
         </>
