@@ -2,10 +2,10 @@ import React from 'react';
 import './ItemCount.css';
 import {  Button } from 'react-bootstrap';
 import { useState , useEffect } from 'react';
- 
+import { useCartContext } from '../../context/cartContext';
  function ItemCount({curso,vacantes}) {
   const [contador, setContador] = useState(0);
-  
+  const {agregarCart} = useCartContext()
   useEffect(() => {
   
    // setContador(0)
@@ -29,6 +29,7 @@ import { useState , useEffect } from 'react';
         return;  
       }
     console.log(contador)
+    agregarCart({...curso,cantidad:contador})
   };
 
   return (

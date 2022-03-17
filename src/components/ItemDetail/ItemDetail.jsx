@@ -3,9 +3,11 @@ import './ItemDetail.css'
 import {Col,Card} from 'react-bootstrap';
 import ItemCount from '../ItemCount/ItemCount';
 import  LinkDetalle  from '../../components/LinkDetalle/LinkDetalle'
+
 function ItemDetail({secciones,cursos,vacantes}) {
     const [seccionesH, setSeccionesH] = useState([])
     const [urlImg, setUrlImg] = useState(0);
+   
     useEffect(() => {
         if (cursos.overviewfiles.length>0) {
             let fileUrl = cursos.overviewfiles[0].filename ;
@@ -18,8 +20,8 @@ function ItemDetail({secciones,cursos,vacantes}) {
     return ( 
         <>
          <Col>
-            <Card style={{ width: '50%' }} >
-            <Card.Img variant="top" style={{ width: '14rem' }} src={'/cursos/'+urlImg}/>
+            <Card style={{ width: '50%'}} >
+            <Card.Img variant="top" style={{ width: '14rem'} } src={'/cursos/'+urlImg}/>
                 <h1 className='textNombre' key={cursos.id}>{cursos.fullname}</h1>
                 <h2 className='textNombre'>Temas</h2>
                 { seccionesH.map((seccion) =>

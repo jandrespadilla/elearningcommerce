@@ -4,12 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NadBarCategorias from './components/NavBar/NatBar';
 import ItemsListConteiner from './conteainers/ItemsListConteiner/ItemsListConteiner'
 import ItemsDetailConteiner from './conteainers/ItemsDetailConteiner/ItemsDetailConteiner'
-import {CartContext} from './context/CartContext'
+import CartContextProvider, {CartContext} from './context/cartContext'
 import Cart from './components/Cart/Cart'
 
 function App() {
   return (
-    <CartContext.provider value = {{}} >
+    <CartContextProvider>
+      
+   
     <BrowserRouter>
         <div className="App fondo" style={{backgroundColor : 'red'}}>
         <NadBarCategorias titulo='Mercurso'/>
@@ -22,7 +24,7 @@ function App() {
           </Routes>
         </div>
     </BrowserRouter>
-    </CartContext.provider>
+    </CartContextProvider>
   );
 }
 

@@ -48,7 +48,7 @@ function NadBarCategorias(titulo) {
                         { cursos.map((categorias) => 
                                 <NavDropdown.Item className='textColor' key={categorias.id} >
                                     <NavLink to={{
-                                            pathname:'/tienda/'+categorias+'/'+categorias.name.toLowerCase()                                             
+                                            pathname:'/tienda/'+categorias.id+'/'+categorias.name.toLowerCase()                                             
                                             }} >
                                     {categorias.name}
                                     </NavLink>
