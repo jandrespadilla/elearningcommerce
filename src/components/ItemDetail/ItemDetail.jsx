@@ -1,13 +1,19 @@
 import { useEffect , useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import './ItemDetail.css'
-import {Col,Card} from 'react-bootstrap';
+import {Col,Card,Button} from 'react-bootstrap';
 import ItemCount from '../ItemCount/ItemCount';
 import  LinkDetalle  from '../../components/LinkDetalle/LinkDetalle'
+
+import { useCartContext } from '../../context/cartContext';
 
 function ItemDetail({secciones,cursos,vacantes}) {
     const [seccionesH, setSeccionesH] = useState([])
     const [urlImg, setUrlImg] = useState(0);
-   
+    const navigate = useNavigate();
+    const {agregarCart} = useCartContext()
+
+  
     useEffect(() => {
         if (cursos.overviewfiles.length>0) {
             let fileUrl = cursos.overviewfiles[0].filename ;
@@ -16,6 +22,7 @@ function ItemDetail({secciones,cursos,vacantes}) {
         setSeccionesH(secciones)
     }, [secciones,cursos])
 
+ 
 
     return ( 
         <>
@@ -28,7 +35,7 @@ function ItemDetail({secciones,cursos,vacantes}) {
                     <p className='textNombre' key={seccion.id}>{seccion.name}</p>
                 )}
                   <ItemCount curso={cursos} vacantes={vacantes} />
-                  
+                  <Button variant="primary" onClick={() => navigate('/cart')} >Terminar mi Compra</Button><br/><br/>
              </Card>
         </Col>            
         </>

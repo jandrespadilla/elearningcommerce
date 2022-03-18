@@ -28,7 +28,7 @@ import { useCartContext } from '../../context/cartContext';
     if(contador === 0){
         return;  
       }
- 
+   // console.log(contador)
     agregarCart({...curso,cantidad:contador})
   };
 
