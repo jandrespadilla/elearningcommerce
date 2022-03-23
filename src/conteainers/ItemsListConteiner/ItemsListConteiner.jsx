@@ -1,6 +1,6 @@
 
 import './ItemsListConteiner.css'
-import { useEffect , useState } from 'react'
+import React, { useEffect , useState } from 'react'
 import ItemsList from '../../components/ItemsList/ItemsList'
 import {  getCursos} from '../../helpers/getCursos'
 import { useParams } from 'react-router-dom'

@@ -1,41 +1,31 @@
-import React from 'react';
+
 import './ItemCount.css';
 import {  Button } from 'react-bootstrap';
-import { useState , useEffect } from 'react';
+import React, { useState , useEffect } from 'react';
 import { useCartContext } from '../../context/cartContext';
- function ItemCount({curso,vacantes}) {
-  const [contador, setContador] = useState(0);
-  const {agregarCart} = useCartContext()
-  useEffect(() => {
+import  Intercambiabilidad  from '../Intercambiador/Intercambiabilidad';
+import { useNavigate } from 'react-router-dom';
+ function ItemCount({curso} ) {
+ 
+   
+  const {restarHandler} = useCartContext()
+  const {sumarHandler} = useCartContext()
+  const {contador} = useCartContext()
+   
+   useEffect(() => { },[curso]);  
+  const navigate = useNavigate();
   
-   // setContador(0)
-  
-  },[vacantes]);  
-  const sumarHandler = () => {
-    if((parseInt(vacantes) - contador) === 0){
-      console.log('No hay mas vacantes')
-      return;  
-    }   
-    setContador(contador + 1)
-  };
-  const restarHandler  = () => {
-    if(contador === 0){
-      return;  
-    }
-    setContador(contador - 1)
-  };
-  const onAdd = () => {
-    if(contador === 0){
-        return;  
-      }
-   // console.log(contador)
-    agregarCart({...curso,cantidad:contador})
-  };
-
   return (
       <>
-        <Button variant="primary"    onClick={() => sumarHandler()}>+</Button> <span className='textNumero'>&nbsp;{contador}&nbsp;</span>  <Button variant="primary"   onClick={() => restarHandler()}>-</Button> <br/><br/>
-        <Button variant="primary"   onClick={() => onAdd() }>Agrear al carrito</Button><br/><br/>
+        <Button variant="primary"    onClick={() => sumarHandler(contador)}>+</Button>
+         <span className='textNumero'>&nbsp;{contador}&nbsp;</span>  
+         <Button variant="primary"   onClick={() => restarHandler(contador)}>-</Button> <br/><br/>
+
+        <Intercambiabilidad curso={curso} /><br/>
+      
+
+
+               
       </>
   );
 }

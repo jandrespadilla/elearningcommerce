@@ -1,7 +1,7 @@
-import { useEffect , useState } from 'react'
+import React, { useEffect , useState } from 'react'
 import './ItemsList.css'
 import Item from '../Item/Item'
-
+ 
 
 function ItemsList({data}) {
     const [cursos, setCursos] = useState([])

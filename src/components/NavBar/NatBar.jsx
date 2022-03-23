@@ -1,7 +1,7 @@
 import Nav from 'react-bootstrap/Nav';
 import './NatBar.css'
 import { Navbar } from 'react-bootstrap';
- 
+import React from 'react';
 import { getCategorias } from '../../helpers/getCategorias'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import TituloApp from '../TituloApp/TituloApp';

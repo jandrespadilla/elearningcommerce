@@ -1,13 +1,15 @@
 import React from 'react';
 import './Item.css';
-import { Card ,  Col} from 'react-bootstrap';
+import { useCartContext } from '../../context/cartContext';
+import { Card ,  Col, Button} from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import  LinkDetalle  from '../LinkDetalle/LinkDetalle'
 
 function Item({curso}) {
-  const [vacantes, setVacantes] = useState(0);
+  
   const [urlImg, setUrlImg] = useState(0);
+  const {vacantes} = useCartContext()
   useEffect(() => {
   
     if (curso.overviewfiles.length>0) {
@@ -15,7 +17,7 @@ function Item({curso}) {
       setUrlImg(fileUrl)     
     }
 
-    setVacantes(10)
+   
   
   },[curso]);
 
@@ -29,12 +31,13 @@ function Item({curso}) {
           {curso.description}
           </Card.Text>
           <Card.Text className='textNombre'>
-          Puestos disponibles  {vacantes}
+          Puestos disponibles {vacantes}
         </Card.Text>
-        <ItemCount curso={curso} vacantes={vacantes} />
-        <LinkDetalle curso={curso} vacantes={vacantes} />
-                                           
-       
+        <ItemCount curso={curso}   />
+        
+        <LinkDetalle curso={curso}    />
+
+        
         
       </Card.Body>
     </Card>
