@@ -16,7 +16,7 @@ function CartContextProvider({children}) {
 
 
     const agregarCart = (item) => {
-      console.log(item);
+    //  console.log(item);
         setCartList([...cartList,{...item,cantidad:contador}])
 
     }
@@ -41,9 +41,12 @@ function CartContextProvider({children}) {
         setVacantes(parseInt(vacantes)-parseInt(contador))
       };
 
-      
+      const vaciarCarito=()=>{
+        setCartList( [])
+    }
+
     return (
-        <CartContext.Provider value = {{cartList,agregarCart,restarHandler,sumarHandler,vacantes,contador}} >
+        <CartContext.Provider value = {{cartList,agregarCart,restarHandler,sumarHandler,vaciarCarito,vacantes,contador}} >
             {children}
         </CartContext.Provider>
         

@@ -11,7 +11,7 @@ import { useNavigate , Link} from 'react-router-dom';
   useEffect(() => {
     setContador(vacantes)
   },[vacantes]);  
-  console.log(curso);
+ // console.log(curso);
   return (
 
     <Link to={"/detalle/"+curso.id} >
