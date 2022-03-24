@@ -16,14 +16,18 @@ function CartContextProvider({children}) {
 
 
     const agregarCart = (item) => {
-    //  console.log(item);
-        setCartList([...cartList,{...item,cantidad:contador}])
-
+     
+      if (isInCart(item.id)){
+        
+          actualizarCantidad(item.id)
+      }else{
+        
+         setCartList([...cartList,{...item,cantidad:contador}])
+      }
     }
 
     const sumarHandler = () => {
-      console.log(vacantes);
-      console.log(contador);
+ 
         if((parseInt(vacantes) - contador) === 0){
           console.log('No hay mas vacantes')
           return;  
@@ -44,9 +48,38 @@ function CartContextProvider({children}) {
       const vaciarCarito=()=>{
         setCartList( [])
     }
+    const isInCart = (id) => {
+        
+      let esta = false  
+      cartList.map (list =>{
+       
+          if (list.id===id) {
+          
+             esta = true;
+          }
+        })
+        return esta
+     }
+     
+     const actualizarCantidad = (id) => {
+     
+      cartList.map (list => 
+        list.id===id
+        ? list.cantidad=contador 
+        : list
+      
+      )
+     }
+
+     const removeItem = (curso) => {
+      console.log(curso.id);
+      cartList.map (list => 
+        list.id=curso.id
+      )
+     }
 
     return (
-        <CartContext.Provider value = {{cartList,agregarCart,restarHandler,sumarHandler,vaciarCarito,vacantes,contador}} >
+        <CartContext.Provider value = {{cartList,agregarCart,restarHandler,sumarHandler,vaciarCarito,removeItem,vacantes,contador}} >
             {children}
         </CartContext.Provider>
         

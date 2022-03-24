@@ -5,8 +5,9 @@ import {  useCartContext } from '../../context/cartContext';
 import { ListGroup ,ListGroupItem} from 'react-bootstrap';
  
 function Cart() {
-    const {cartList} = useCartContext()
-    const {vaciarCarito} = useCartContext()
+    const {cartList,vaciarCarito,removeItem} = useCartContext()
+ 
+    
     const [cursos, setCursos] = useState([])
     useEffect(() => {
         setCursos(cartList)
@@ -16,7 +17,7 @@ function Cart() {
         <ListGroup>
         { cursos.map((curso) =>
                
-               <ListGroupItem  key={curso.id}>{curso.fullname} Cantidad : {curso.cantidad} <button className="btn btn-outline-primary"  >Eliminar</button></ListGroupItem>
+               <ListGroupItem key={curso.id}>Cod.: {curso.id} Nombre: {curso.fullname} Cantidad : {curso.cantidad} <button   key={curso.id}  onClick={() => removeItem(curso)} className="btn btn-outline-primary"  >Eliminar</button></ListGroupItem>
                         
                 )}
          
