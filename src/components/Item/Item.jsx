@@ -33,7 +33,7 @@ function Item({curso}) {
           <Card.Text className='textNombre'>
           Puestos disponibles {vacantes}
         </Card.Text>
-        <ItemCount curso={curso}   />
+         
         
         <LinkDetalle curso={curso}    />
 

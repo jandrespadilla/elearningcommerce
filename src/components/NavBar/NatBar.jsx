@@ -10,11 +10,12 @@ import CartWidget from '../CartWidget/CartWidget';
 import { NavLink } from 'react-router-dom';
 import { useEffect , useState } from 'react'
 import logo from '../../img/logo192.png'
+import { useCartContext } from '../../context/cartContext';
 
 function NadBarCategorias(titulo) {
     const [cursos, setCursos] = useState([])
+    const {cantidad} = useCartContext()
     
-
    useEffect(() => {
             getCategorias.then(
                 (data) => {
@@ -22,7 +23,10 @@ function NadBarCategorias(titulo) {
                 }  
             ).catch(
             )
+          
    }, [])
+
+  
 
     const funEvento = (eventKey) => alert(`Selecciono ${eventKey}`);
   
@@ -64,8 +68,16 @@ function NadBarCategorias(titulo) {
                    
                         <NavLink className='textColor ' to='/cart'>
                             <CartWidget />  
+                           
                         </NavLink> 
-                     
+                        {
+                parseInt(cantidad) === 0 ? 
+                <></>
+            : 
+                <span style={{ background: 'red' }} >{cantidad}</span> 
+
+                        }
+                         
                 </Nav.Item>                
             </Nav>
       </Navbar.Brand>
