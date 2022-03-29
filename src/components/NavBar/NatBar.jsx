@@ -14,7 +14,7 @@ import { useCartContext } from '../../context/cartContext';
 
 function NadBarCategorias(titulo) {
     const [cursos, setCursos] = useState([])
-    const {cantidad} = useCartContext()
+    const {acumuladorCart} = useCartContext()
     
    useEffect(() => {
             getCategorias.then(
@@ -71,10 +71,10 @@ function NadBarCategorias(titulo) {
                            
                         </NavLink> 
                         {
-                parseInt(cantidad) === 0 ? 
+                parseInt(acumuladorCart()) === 0 ? 
                 <></>
             : 
-                <span style={{ background: 'red' }} >{cantidad}</span> 
+                <span style={{ background: 'red' }} >{acumuladorCart()}</span> 
 
                         }
                          

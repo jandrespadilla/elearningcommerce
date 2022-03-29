@@ -16,6 +16,13 @@ function CartContextProvider({children}) {
        
     },[contador,vacantes]);
 
+    const acumuladorCart = () => {
+        return (
+          cartList.reduce((acumulador, valor) => acumulador + valor.cantidad, 0)  
+        )
+
+
+    }
 
 
     const agregarCart = (item) => {
@@ -64,8 +71,8 @@ function CartContextProvider({children}) {
 
 
      const actualizarCantidad = () => {
-           
-          console.log('cantidad '+ cantidad);
+              cartList.reduce((acumulador, valor) => acumulador + valor.cantidad, 0)  
+          
           for (let list of cartList) {
             setCantidad(parseInt(cantidad)+parseInt(list.cantidad))
           }
@@ -76,15 +83,11 @@ function CartContextProvider({children}) {
      const removeItem = (curso) => {
         
           cartList.splice(cartList.findIndex(e => e.id === curso.id),1);
-          if (cartList.length===0) {
-            vaciarCarito()
-          }else{
-            actualizarCantidad()
-          }
+          actualizarCantidad()
      }
 
     return (
-        <CartContext.Provider value = {{cartList,agregarCart,restarHandler,sumarHandler,vaciarCarito,removeItem,cantidad,vacantes,contador}} >
+        <CartContext.Provider value = {{cartList,agregarCart,restarHandler,sumarHandler,vaciarCarito,removeItem,acumuladorCart,cantidad,vacantes,contador}} >
             {children}
         </CartContext.Provider>
         
