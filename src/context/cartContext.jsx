@@ -6,7 +6,7 @@ import  React, { useState, createContext,  useContext ,useEffect } from "react";
    export const useCartContext = () => useContext(CartContext)
  
 function CartContextProvider({children}) {
-    const [cartList,setCartList]  = useState([])
+    const [cartList, setCartList]  = useState([])
     const [contador, setContador] = useState(0);
     const [vacantes, setVacantes] = useState(0);
     const [cantidad, setCantidad] = useState(0);
@@ -27,12 +27,15 @@ function CartContextProvider({children}) {
 
     const agregarCart = (item) => {
       if (isInCart(item.id)){
-          actualizarCantidad(item.id)
+        agregarNuevaCantidad(item.id)
+        acumuladorCart()
+        actualizarCantidad()
+        
       }else{
           setCartList([...cartList,{...item,cantidad:contador}])
           setCantidad(cantidad+contador)    
       }
-   
+      
     }
 
     const sumarHandler = () => {
@@ -70,8 +73,19 @@ function CartContextProvider({children}) {
      }
 
 
+     const agregarNuevaCantidad = (id) => {
+     
+      cartList.map (list => 
+        list.id===id
+        ? list.cantidad=contador 
+        : list
+      
+      )
+      
+     }
+
      const actualizarCantidad = () => {
-              cartList.reduce((acumulador, valor) => acumulador + valor.cantidad, 0)  
+     
           
           for (let list of cartList) {
             setCantidad(parseInt(cantidad)+parseInt(list.cantidad))
@@ -83,7 +97,13 @@ function CartContextProvider({children}) {
      const removeItem = (curso) => {
         
           cartList.splice(cartList.findIndex(e => e.id === curso.id),1);
-          actualizarCantidad()
+          if (cartList.length===0) {
+            vaciarCarito()
+          }else{
+            actualizarCantidad()
+            
+          }
+          acumuladorCart()
      }
 
     return (
