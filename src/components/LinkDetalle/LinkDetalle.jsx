@@ -11,14 +11,12 @@ import { useNavigate , Link} from 'react-router-dom';
   useEffect(() => {
     setContador(vacantes)
   },[vacantes]);  
- // console.log(curso);
+  
   return (
 
     <Link to={"/detalle/"+curso.id} >
-              
-      
-    <button className="btn btn-outline-primary"  >Ver detalle</button>
-</Link>          
+        <button className="btn btn-outline-primary"  >Ver detalle</button>
+    </Link>          
        
   );
 }

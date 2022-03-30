@@ -12,11 +12,8 @@ function Item({curso}) {
   const {vacantes} = useCartContext()
   useEffect(() => {
   
-    if (curso.overviewfiles.length>0) {
-      let fileUrl = curso.overviewfiles[0].filename ;
-      setUrlImg(fileUrl)     
-    }
-
+     
+    setUrlImg(curso.imgenes) 
    
   
   },[curso]);
@@ -26,7 +23,7 @@ function Item({curso}) {
     <Card   style={{ width: '14rem' }}>
       <Card.Img variant="top" src={'/cursos/'+urlImg}/>
       <Card.Body>
-        <Card.Title className='textNombre'>{curso.fullname}</Card.Title>
+        <Card.Title className='textNombre'>{curso.name}</Card.Title>
         <Card.Text className='textNombre'>
           {curso.description}
           </Card.Text>

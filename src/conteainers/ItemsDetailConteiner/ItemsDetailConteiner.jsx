@@ -3,7 +3,7 @@ import React, { useEffect , useState } from 'react'
 import ItemDetail from '../../components/ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom'
 import {  getCursos} from '../../helpers/getCursos'
-
+import { doc, getDoc, getFirestore } from 'firebase/firestore'
 function ItemDetailConteiner({greeting}) {
     
     const [loading, setLoading] = useState(true)
@@ -31,6 +31,15 @@ function ItemDetailConteiner({greeting}) {
             setLoading(false)
             }
         )
+              
+        const db = getFirestore()
+        const queryDb = doc(db, 'productos', cursoId)
+        getDoc(queryDb)
+        .then(resp => setCursos( { id: resp.id, ...resp.data() } ))
+        .catch(err => console.log(err))
+        .finally(() =>setLoading(false))
+
+/*
         getCursos.then(
             (data) => {
                 
@@ -40,7 +49,7 @@ function ItemDetailConteiner({greeting}) {
         ).finally(() => {
             setLoading(false)
             }
-        )
+        )*/
 
 }, [cursoId,cantidad]) 
 

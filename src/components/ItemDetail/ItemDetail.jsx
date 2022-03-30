@@ -15,14 +15,11 @@ function ItemDetail({secciones,cursos,vacantes}) {
  
   
     useEffect(() => {
-        if (cursos.overviewfiles.length>0) {
-            let fileUrl = cursos.overviewfiles[0].filename ;
-            setUrlImg(fileUrl)     
-          }      
+        setUrlImg(cursos.imgenes)    
         setSeccionesH(secciones)
     }, [secciones,cursos])
 
-  
+  console.log(cursos);
     
 
     return ( 
@@ -30,11 +27,11 @@ function ItemDetail({secciones,cursos,vacantes}) {
          <Col>
             <Card style={{ width: '50%'}} >
             <Card.Img variant="top" style={{ width: '14rem'} } src={'/cursos/'+urlImg}/>
-                <h1 className='textNombre' key={cursos.id}>{cursos.fullname}</h1>
+                <h1 className='textNombre' key={cursos.id}>{cursos.name}</h1>
                 <h2 className='textNombre'>Temas</h2>
-                { seccionesH.map((seccion) =>
+                { /*seccionesH.map((seccion) =>
                     <p className='textNombre' key={seccion.id}>{seccion.name}</p>
-                )}
+                )*/}
                   <ItemCount curso={cursos} vacantes={vacantes} />
 
 

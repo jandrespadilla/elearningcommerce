@@ -31,7 +31,7 @@ function generarCompra() {
         <ListGroup>
         { cartList.map((curso) =>
                
-               <ListGroupItem key={curso.id}>Cod.: {curso.id} Nombre: {curso.fullname} Cantidad : {curso.cantidad} <button   key={curso.id}  onClick={() => removeItem(curso)} className="btn btn-outline-primary"  >Eliminar</button></ListGroupItem>
+               <ListGroupItem key={curso.id}>Cod.: {curso.id} Nombre: {curso.name} Cantidad : {curso.cantidad} <button   key={curso.id}  onClick={() => removeItem(curso)} className="btn btn-outline-primary"  >Eliminar</button></ListGroupItem>
                         
                 )}
          

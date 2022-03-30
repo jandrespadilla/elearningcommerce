@@ -8,6 +8,7 @@ function ItemsList({data}) {
     useEffect(() => {
         setCursos(data)
     }, [data])
+    console.log(data);
     return ( 
         <>
                 <div  className="row g-4 xs-1 md-4 ">

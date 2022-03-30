@@ -21,7 +21,7 @@ function App() {
         <NadBarCategorias titulo='Mercurso'/>
         <Routes>
             <Route path='/' element={<ItemsListConteiner categoriaHome='6' greeting='Cargando..'/>}></Route>
-            <Route path='/tienda/:categoriaId/:categoriaName' element={<ItemsListConteiner greeting='Cargando..'/>}></Route>
+            <Route path='/tienda/:categoriaId' element={<ItemsListConteiner greeting='Cargando..'/>}></Route>
             <Route path='/detalle/:cursoId' element={<ItemsDetailConteiner greeting='Cargando..'/>}></Route>
             <Route path='/cart' element={<Cart greeting='Cargando'/>}></Route>
             <Route path='/*' element={ <Navigate to='/'></Navigate>}></Route>

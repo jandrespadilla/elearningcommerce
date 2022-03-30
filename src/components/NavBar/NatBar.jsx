@@ -1,29 +1,37 @@
 import Nav from 'react-bootstrap/Nav';
 import './NatBar.css'
 import { Navbar } from 'react-bootstrap';
-import React from 'react';
+import React ,{ useEffect , useState }  from 'react';
 import { getCategorias } from '../../helpers/getCategorias'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import TituloApp from '../TituloApp/TituloApp';
 import CartWidget from '../CartWidget/CartWidget';
-//import LogoWidget from '../LogoWidget/LogoWidget';
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore"
 import { NavLink } from 'react-router-dom';
-import { useEffect , useState } from 'react'
 import logo from '../../img/logo192.png'
 import { useCartContext } from '../../context/cartContext';
 
 function NadBarCategorias(titulo) {
-    const [cursos, setCursos] = useState([])
+    const [categorias, setCategorias] = useState([])
     const {acumuladorCart} = useCartContext()
-    
+    const [loading, setLoading] = useState(true)
+
+
    useEffect(() => {
-            getCategorias.then(
+            /*getCategorias.then(
                 (data) => {
                     setCursos(data)
                 }  
             ).catch(
-            )
-          
+            )*/
+            const db = getFirestore()
+            const queryColection = collection(db, 'categorias')
+            getDocs(queryColection)
+            .then(resp => setCategorias( resp.docs.map(item => ( { id: item.id, ...item.data() } ) ) ))
+            .catch(err => console.log(err))
+            .finally(()=> setLoading(false)) 
+
+    
    }, [])
 
   
@@ -49,12 +57,12 @@ function NadBarCategorias(titulo) {
                 </Nav.Item>
 
                 <NavDropdown className='textColor'  title="Categorias" id="nav-dropdown">
-                        { cursos.map((categorias) => 
-                                <NavDropdown.Item className='textColor' key={categorias.id} >
+                        { categorias.map((categoria) => 
+                                <NavDropdown.Item className='textColor' key={categoria.id} >
                                     <NavLink to={{
-                                            pathname:'/tienda/'+categorias.id+'/'+categorias.name.toLowerCase()                                             
+                                            pathname:'/tienda/'+categoria.nombre                                             
                                             }} >
-                                    {categorias.name}
+                                    {categoria.nombre}
                                     </NavLink>
                                 </NavDropdown.Item>
                         )} 
