@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NadBarCategorias from './components/NavBar/NatBar';
 import ItemsListConteiner from './conteainers/ItemsListConteiner/ItemsListConteiner'
 import ItemsDetailConteiner from './conteainers/ItemsDetailConteiner/ItemsDetailConteiner'
-import CartContextProvider, {CartContext} from './context/cartContext'
+import CartContextProvider from './context/cartContext'
 import Cart from './components/Cart/Cart'
 import getFireStoreApp from './firebase/config';
 
@@ -18,7 +18,7 @@ function App() {
    
     <BrowserRouter>
         <div className="App fondo" style={{backgroundColor : 'red'}}>
-        <NadBarCategorias titulo='Mercurso'/>
+        <NadBarCategorias greeting='Cargando' titulo='Mercurso'/>
         <Routes>
             <Route path='/' element={<ItemsListConteiner categoriaHome='6' greeting='Cargando..'/>}></Route>
             <Route path='/tienda/:categoriaId' element={<ItemsListConteiner greeting='Cargando..'/>}></Route>

@@ -1,11 +1,9 @@
 import React ,{ useEffect , useState } from 'react'
 
 import './ItemDetail.css'
-import {Col,Card,Button} from 'react-bootstrap';
+import {Col,Card} from 'react-bootstrap';
 import ItemCount from '../ItemCount/ItemCount';
  
-
-import { useCartContext } from '../../context/cartContext';
 
 function ItemDetail({secciones,cursos,vacantes}) {
     const [seccionesH, setSeccionesH] = useState([])
@@ -33,9 +31,6 @@ function ItemDetail({secciones,cursos,vacantes}) {
                     <p className='textNombre' key={seccion.id}>{seccion.name}</p>
                 )*/}
                   <ItemCount curso={cursos} vacantes={vacantes} />
-
-
-             
              </Card>
         </Col>            
         </>
