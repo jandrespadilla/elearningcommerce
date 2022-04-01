@@ -62,15 +62,20 @@ function CartContextProvider({children}) {
         setCantidad(0);
        }
 
-    const isInCart = (id) => {
-       let esta = false  
-      cartList.map (list =>{
-        if (list.id===id) {
-              esta = true;
-          }
-        })
-        return esta
-     }
+      const precioTotal = () => {
+        return cartList.reduce((acum, prod) => acum + (prod.cantidad * prod.price) , 0)
+      }
+
+       
+      const isInCart = (id) => {
+        let esta = false  
+        cartList.map (list =>{
+          if (list.id===id) {
+                esta = true;
+            }
+          })
+          return esta
+      }
 
 
      const agregarNuevaCantidad = (id) => {
@@ -107,7 +112,7 @@ function CartContextProvider({children}) {
      }
 
     return (
-        <CartContext.Provider value = {{cartList,agregarCart,restarHandler,sumarHandler,vaciarCarito,removeItem,acumuladorCart,cantidad,vacantes,contador}} >
+        <CartContext.Provider value = {{cartList,agregarCart,restarHandler,sumarHandler,vaciarCarito,removeItem,acumuladorCart,precioTotal,cantidad,vacantes,contador}} >
             {children}
         </CartContext.Provider>
         

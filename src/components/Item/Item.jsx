@@ -1,15 +1,12 @@
-import React from 'react';
+import React , { useState, useEffect } from 'react';
 import './Item.css';
-import { useCartContext } from '../../context/cartContext';
 import { Card ,  Col} from 'react-bootstrap';
-import { useState, useEffect } from 'react';
-
 import  LinkDetalle  from '../LinkDetalle/LinkDetalle'
 
 function Item({curso}) {
   
   const [urlImg, setUrlImg] = useState(0);
-  const {vacantes} = useCartContext()
+  
   useEffect(() => {
       setUrlImg(curso.imgenes) 
   },[curso]);
@@ -21,10 +18,13 @@ function Item({curso}) {
       <Card.Body>
           <Card.Title className='textNombre'>{curso.name}</Card.Title>
           <Card.Text className='textNombre'>
-              {curso.description}
+              {curso.descripcion}
           </Card.Text>
+          <Card.Text className='textPrecio'>
+             Precio {curso.price}
+          </Card.Text>                    
           <Card.Text className='textNombre'>
-              Puestos disponibles {vacantes}
+              Puestos disponibles {curso.stock}
           </Card.Text>
           <LinkDetalle curso={curso}    />
       </Card.Body>
