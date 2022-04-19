@@ -3,31 +3,32 @@ import './Item.css';
 import { Card ,  Col} from 'react-bootstrap';
 import  LinkDetalle  from '../LinkDetalle/LinkDetalle'
 
-function Item({curso}) {
+function Item({course}) {
   
   const [urlImg, setUrlImg] = useState(0);
   
   useEffect(() => {
-      setUrlImg(curso.imgenes) 
-  },[curso]);
+      setUrlImg(course.imgenes) 
+  },[course]);
 
   return (
-    <Col>
-    <Card   style={{ width: '14rem' }}>
-      <Card.Img variant="top" src={'/cursos/'+urlImg}/>
-      <Card.Body>
-          <Card.Title className='textNombre'>{curso.name}</Card.Title>
-          <Card.Text className='textNombre'>
-              {curso.descripcion}
+    <Col className=' col-xl-3' >
+    <Card  className='cardSize' >
+      <Card.Img className='imgSize' variant="top" src={'/cursos/'+urlImg}/>
+      <Card.Body >
+          <Card.Title className='textName'>{course.name}</Card.Title>
+          <Card.Text className='textDescription'>
+              {course.descripcion}
           </Card.Text>
-          <Card.Text className='textPrecio'>
-             Precio {curso.price}
+          <Card.Text className='textPrice'>
+             Precio {course.price}
           </Card.Text>                    
-          <Card.Text className='textNombre'>
-              Puestos disponibles {curso.stock}
+          <Card.Text className='textName'>
+              Puestos disponibles {course.stock}
           </Card.Text>
-          <LinkDetalle curso={curso}    />
+         
       </Card.Body>
+      <LinkDetalle  course={course}    />
     </Card>
     </Col>
   

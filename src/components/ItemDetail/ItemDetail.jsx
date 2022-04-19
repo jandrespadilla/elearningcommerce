@@ -1,35 +1,50 @@
 import React ,{ useEffect , useState } from 'react'
 import './ItemDetail.css'
-import {Col,Card} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 import ItemCount from '../ItemCount/ItemCount';
- 
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore"
 
-function ItemDetail({secciones,cursos,vacantes}) {
-    const [seccionesH, setSeccionesH] = useState([])
+function ItemDetail({courses,vacancies}) {
     const [urlImg, setUrlImg] = useState(0);
-  
+    const [loading, setLoading] = useState(true)
+    const [secciones, setSecciones] = useState([]);
+    
     useEffect(() => {
-        setUrlImg(cursos.imgenes)    
-        setSeccionesH(secciones)
-    }, [secciones,cursos])
+        setUrlImg(courses.imgenes)    
+          
+        const db = getFirestore()
+        const queryColection = collection(db, 'secciones')
+        const queryFilter = query( queryColection, where('idCurso', '==', courses.id)  )
+        getDocs(queryFilter)
+        .then(resp => setSecciones( resp.docs.map(item => ( { id: item.id, ...item.data() } ) ) ))
+        .catch(err => console.log(err))
+        .finally(()=> setLoading(false)) 
+
+    }, [courses])
 
     return ( 
         <>
-         <Col>
-            <Card style={{ width: '50%'}} >
+         
+            <Card className='styleCard d-block' >
             <Card.Img variant="top" style={{ width: '14rem'} } src={'/cursos/'+urlImg}/>
-                <h1 className='textNombre' key={cursos.id}>{cursos.name}</h1>
-                <h2 className='textNombre'>Descripcion</h2>
-                <p>{cursos.descripcion}</p>
-                <h2 className='textNombre'>Precio</h2>
-                <p>{cursos.price}</p>                
-                <h2 className='textNombre'>Temas</h2>
-                { /*seccionesH.map((seccion) =>
-                    <p className='textNombre' key={seccion.id}>{seccion.name}</p>
-                )*/}
-                  <ItemCount curso={cursos} vacantes={vacantes} />
+                <h1  key={courses.id}>{courses.name}</h1>
+                <h2 >Descripcion</h2>
+                <p>{courses.descripcion}</p>
+                <h2 >Precio</h2>
+                <p>{courses.price}</p>                
+                <h2 >Temas</h2>
+                { 
+                loading ? <h2>Cargando</h2>
+                :
+                secciones.map((seccion) =>
+                    <>
+                        <h4  key={seccion.id} >{seccion.name} </h4>
+                        <p className='textNombre'>{seccion.detalle}</p>
+                    </>
+                )}
+                  <ItemCount course={courses} vacancies={vacancies} />
              </Card>
-        </Col>            
+                    
         </>
     )  
 }

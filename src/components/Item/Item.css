@@ -1,6 +1,20 @@
-.textNombre{
+
+.textName{
     color: black;
 }
-.textDescripcion{
+.textDescription{
     color: black;
+}
+.textPrice{
+    color: black;
+}
+
+.cardSize{
+    min-height: 495px;
+    width: 14rem;
+    padding-bottom: 10px;
+}
+.colSize{
+    width: 238px;
+    margin-right: 10px;
 }

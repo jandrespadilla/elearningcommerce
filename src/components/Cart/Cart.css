@@ -3,3 +3,42 @@
     width: 30px;
     height: 30px;
 }
+
+.labels{
+    text-align: left;
+    width: 100%;
+    font-weight: bold;
+}
+
+.itemDescription{
+    text-align: left;
+    width: 75%;
+    font-weight: bold;
+}
+
+.itemBotton{
+    text-align: right;
+    width: 15%;
+    font-weight: bold;
+    vertical-align:middle;
+}
+
+.total{
+     
+    font-weight: bold;
+}
+
+.emptyCard{
+    height: auto;
+    vertical-align:middle;
+}
+
+.btnGoOn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.finishShop{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

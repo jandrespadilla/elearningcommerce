@@ -1,18 +1,28 @@
-.fondoNav{
+.backgroundNav{
     background-color: skyblue;
+    margin-bottom: 15px;
+  
+    
 }
 .textColor{
-    color: rgb(17, 17, 92);
+    color: rgb(13, 13, 75);
     font-weight: bold;
+    font-size: large;
+    text-decoration: none;
 }
 #nav-dropdown{
     color: rgb(17, 17, 92);
     font-weight: bold;
-   
+    text-decoration: none;
 }
-.titulo{
-    color: rgb(195, 195, 238);
-    font-weight: bold;
-   
+
+.link{
+  margin: 5px; 
+}
+.colapAling{
+    text-align: left;
+  }
+.spaceHome{
+    margin-bottom: 15px;
 }
 

@@ -7,116 +7,108 @@ import  React, { useState, createContext,  useContext ,useEffect } from "react";
  
 function CartContextProvider({children}) {
     const [cartList, setCartList]  = useState([])
-    const [contador, setContador] = useState(0);
-    const [vacantes, setVacantes] = useState(0);
-    const [cantidad, setCantidad] = useState(0);
+    const [counter, setCounter] = useState(0);
+    const [vacancies, setVacancies] = useState(0);
+    const [amount, setAmount] = useState(0);
     useEffect(() => {
-      setVacantes(10)
-      setContador(contador)
+      setVacancies(10)
+      setCounter(counter)
        
-    },[contador,vacantes]);
+    },[counter,vacancies]);
 
-    const acumuladorCart = () => {
+    const accumulatorCart = () => {
         return (
-          cartList.reduce((acumulador, valor) => acumulador + valor.cantidad, 0)  
+          cartList.reduce((accumulator, valor) => accumulator + valor.amount, 0)  
         )
-
-
     }
 
-
-    const agregarCart = (item) => {
-      if (isInCart(item.id)){
-        agregarNuevaCantidad(item.id)
-        acumuladorCart()
-        actualizarCantidad()
+    const addCart = (item) => {
+       
+       if(parseInt(counter)>0){
         
-      }else{
-          setCartList([...cartList,{...item,cantidad:contador}])
-          setCantidad(cantidad+contador)    
-      }
-      
+            if (isInCart(item.id)){
+              addNewAmount(item.id)
+              accumulatorCart()
+              updateAmount()
+            }else{
+              
+                setCartList([...cartList,{...item,amount:counter}])
+                setAmount(amount+counter)    
+            }
+            return true;
+          }
+        else{
+          return false;
+        }
     }
 
-    const sumarHandler = () => {
- 
-        if((parseInt(vacantes) - contador) === 0){
+    const addHandler = () => {
+        if((parseInt(vacancies) - counter) === 0){
           console.log('No hay mas vacantes')
           return;  
         }   
-        
-        setContador(contador + 1)
-        setVacantes(parseInt(vacantes)-parseInt(contador))
+        setCounter(counter + 1)
+        setVacancies(parseInt(vacancies)-parseInt(counter))
       };
 
-      const restarHandler  = () => {
-        if(contador === 0){
+      const subtractHandler  = () => {
+        if(counter === 0){
           return;  
         }
-        setContador(contador - 1)
-        setVacantes(parseInt(vacantes)-parseInt(contador))
+        setCounter(counter - 1)
+        setVacancies(parseInt(vacancies)-parseInt(counter))
       };
 
-      const vaciarCarito=()=>{
+      const emptyCard=()=>{
         setCartList( [])
-        setCantidad(0);
+        setAmount(0);
        }
 
-      const precioTotal = () => {
-        return cartList.reduce((acum, prod) => acum + (prod.cantidad * prod.price) , 0)
+      const totalPrice = () => {
+        return cartList.reduce((acum, prod) => acum + (prod.amount * prod.price) , 0)
       }
 
-       
-      const isInCart = (id) => {
-        let esta = false  
-        cartList.map (list =>{
+      function isInCart(id){
+      let esta= false
+      cartList.forEach (list =>{
           if (list.id===id) {
-                esta = true;
+            esta= true;
             }
-          })
+          }) 
           return esta
       }
 
-
-     const agregarNuevaCantidad = (id) => {
-     
+     const addNewAmount = (id) => {
       cartList.map (list => 
         list.id===id
-        ? list.cantidad=contador 
+        ? list.amount=counter 
         : list
       
       )
-      
      }
 
-     const actualizarCantidad = () => {
-     
-          
+     const updateAmount = () => {
           for (let list of cartList) {
-            setCantidad(parseInt(cantidad)+parseInt(list.cantidad))
+            setAmount(parseInt(amount)+parseInt(list.amount))
           }
-
       }
 
      
      const removeItem = (curso) => {
-        
           cartList.splice(cartList.findIndex(e => e.id === curso.id),1);
           if (cartList.length===0) {
-            vaciarCarito()
+            emptyCard()
           }else{
-            actualizarCantidad()
+            updateAmount()
             
           }
-          acumuladorCart()
+          accumulatorCart()
      }
 
     return (
-        <CartContext.Provider value = {{cartList,agregarCart,restarHandler,sumarHandler,vaciarCarito,removeItem,acumuladorCart,precioTotal,cantidad,vacantes,contador}} >
+        <CartContext.Provider value = {{cartList,addCart,subtractHandler,addHandler,emptyCard,removeItem,accumulatorCart,totalPrice,amount,vacancies,counter}} >
             {children}
         </CartContext.Provider>
-        
-
     )
     
 }
