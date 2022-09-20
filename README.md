@@ -10,7 +10,7 @@ MERCURSOS esta destinado a generar un sitio donde ademas de poder comercializar 
 
 El contenido de los cursos estan alojados en una instancia de Moodle instalada para servir de backend de este sitio.
 La url del Moodle es [http://jorgeandrespadilla.com.ar/mod](http://jorgeandrespadilla.com.ar/mod)
-
+El sistema funconal se encuentra alojado en [https://mercurso.netlify.app/](https://mercurso.netlify.app/)
 ## Script para correr el sitio
 
 Correr el siguiente comando en el directorio del proyecto
